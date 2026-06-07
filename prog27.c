@@ -1,29 +1,22 @@
 #include <stdio.h>
 
-
-int sumOfDigits(int num) {
-    
-    if (num == 0) {
-        return 0;
+// Function to count set bits
+int countSetBits(int n) {
+    int count = 0;
+    while (n > 0) {
+        n = n & (n - 1); // Clears the lowest set bit
+        count++;
     }
-    // Recursive case: extract last digit + call function for remaining digits
-    return (num % 10) + sumOfDigits(num / 10);
+    return count;
 }
 
 int main() {
-    int number, result;
-
-    printf("Enter an integer: ");
-    scanf("%d", &number);
-
+    int num;
     
-    if (number < 0) {
-        number = -number;
-    }
-
-    result = sumOfDigits(number);
-
-    printf("Sum of digits is: %d\n", result);
-
+    printf("Enter an integer: ");
+    scanf("%d", &num);
+    
+    printf("Number of set bits in %d is: %d\n", num, countSetBits(num));
+    
     return 0;
 }
